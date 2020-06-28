@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+	const AVAILABLE_PRODUCT = 'availabe';
+	const UNAVAILABLE_PRODUCT = 'unavailable';
+
     protected $fillable = [
     	'name',
     	'description',
@@ -14,4 +17,8 @@ class Product extends Model
     	'image',
     	'seller_id',
     ];
+
+    public function isAvailable(){
+    	return $this->status == Product::AVAILABLE_PRODUCT;
+    }
 }
