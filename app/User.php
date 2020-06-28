@@ -59,6 +59,6 @@ class User extends Authenticatable
     }
 
     public static function generateVerificationCode(){
-        return str_random(40);
+        return str_random(40);  
     }
 }
