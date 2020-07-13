@@ -7,6 +7,7 @@ use Throwable;
 use Illuminate\Validation\ValidationException;
 use App\Traits\ApiResponser;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -65,6 +66,10 @@ class Handler extends ExceptionHandler
             return $this->errorResponse("Does not exist in any {$modelName} with the specified identifier", 404);
         }
 
+        if($exception instanceof AuthenticationException){
+            return $this->unauthenticated($request, $exception);
+        }
+
         return parent::render($request, $exception);
     }
 
@@ -81,5 +86,18 @@ class Handler extends ExceptionHandler
         $errors = $e->validator->errors()->getMessages();
 
         return $this->errorResponse($errors, 422);
+    }
+
+    /**
+     * Convert an authentication exception into a response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        return $this->errorResponse('Unauthenticated'., 401);
+        //return $this->errorResponse($exception->getMessage(), 401);
     }
 }
