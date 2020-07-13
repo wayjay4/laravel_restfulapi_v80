@@ -53,6 +53,11 @@ Route::resource('transactions', 'Transaction\TransactionController', ['only' => 
 Route::resource('transactions.categories', 'Transaction\TransactionCategoryController', ['only' => ['index']]);
 
 /**
+ * Transaction-Product
+ */
+Route::resource('transactions.sellers', 'Transaction\TransactionSellerController', ['only' => ['index']]);
+
+/**
  * Users
  */
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
