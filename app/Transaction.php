@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Buyer;
+use App\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,10 +20,10 @@ class Transaction extends Model
     ];
 
     public function buyer(){
-    	return belongsTo(Buyer::class);
+    	return $this->belongsTo(Buyer::class);
     }
 
     public function product(){
-    	return belongsTo(Product::class);
+    	return $this->belongsTo(Product::class);
     }
 }
