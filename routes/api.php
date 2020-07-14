@@ -33,6 +33,11 @@ Route::resource('buyers', 'Buyer\BuyerController', ['only' => ['index', 'show']]
 Route::resource('buyers.transactions', 'Buyer\BuyerTransactionController', ['only' => ['index']]);
 
 /**
+ * Buyers-Products
+ */
+Route::resource('buyers.products', 'Buyer\BuyerProductController', ['only' => ['index']]);
+
+/**
  * Categories
  */
 Route::resource('categories', 'Category\CategoryController', ['except' => ['create', 'edit']]);
