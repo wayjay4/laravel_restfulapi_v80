@@ -12,7 +12,7 @@ class Product extends Model
 {
     use SoftDeletes;
 
-	const AVAILABLE_PRODUCT = 'availabe';
+	const AVAILABLE_PRODUCT = 'available';
 	const UNAVAILABLE_PRODUCT = 'unavailable';
 
     protected $dates = ['deleted_at'];
