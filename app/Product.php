@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Category;
+use App\Seller;
+use App\Transaction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
