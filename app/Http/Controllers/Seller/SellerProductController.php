@@ -85,6 +85,12 @@ class SellerProductController extends ApiController
             }
         }
 
+        if($request->hasFile('image')){
+            Storage::disk('images')->delete($product->image);
+
+            $product->image = $request->image->store('/product_img', 'images');
+        }
+
         if($product->isClean()){
             return $this->errorResponse('You need to specify a different value to update', 422);
         }
