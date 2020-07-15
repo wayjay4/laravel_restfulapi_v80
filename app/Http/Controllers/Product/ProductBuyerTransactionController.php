@@ -51,12 +51,12 @@ class ProductBuyerTransactionController extends ApiController
             $product->save();
 
             $transaction = Transaction::create([
-                'quantity' => $product->quantity,
+                'quantity' => $request->quantity,
                 'buyer_id' => $buyer->id,
                 'product_id' => $product->id,
             ]);
 
-            return $this->showOne($transaction);
+            return $this->showOne($transaction, 201);
         });
     }
 }
