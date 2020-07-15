@@ -106,7 +106,7 @@ class SellerProductController extends ApiController
 
         $product->delete();
 
-        Storage::disk('images')->delete($product->image);
+        //Storage::disk('images')->delete($product->image);
 
         return $this->showOne($product);
     }
