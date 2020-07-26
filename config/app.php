@@ -167,7 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Spatie\Spatie\Fractal\Fractal\FractalServiceProvider::class,
+        Spatie\Fractal\FractalServiceProvider::class,
 
         /*
          * Application Service Providers...
