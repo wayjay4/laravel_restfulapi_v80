@@ -47,11 +47,11 @@ class TransactionTransformer extends TransformerAbstract
                     'href' => route('transactions.show', $transaction->id),
                 ],
                 [
-                    'rel' => 'transactions.categories',
+                    'rel' => 'transaction.categories',
                     'href' => route('transactions.categories.index', $transaction->id),
                 ],
                 [
-                    'rel' => 'transactions.seller',
+                    'rel' => 'transaction.seller',
                     'href' => route('transactions.sellers.index', $transaction->id),
                 ],
                 [
