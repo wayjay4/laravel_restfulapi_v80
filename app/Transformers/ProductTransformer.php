@@ -38,7 +38,7 @@ class ProductTransformer extends TransformerAbstract
             'details' => (string) $product->description,
             'stock' => (int) $product->quantity,
             'situation' => (string) $product->status,
-            'picture' => url("images/product_img/{$product->image}"),
+            'picture' => url("images/{$product->image}"),
             'seller' => (int) $product->seller_id,
             'creationDate' => $product->created_at,
             'lastChange' => $product->updated_at,
