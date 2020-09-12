@@ -11,6 +11,8 @@ class BuyerTransactionController extends ApiController
     public function __construct()
     {
         parent::__construct();
+
+        $this->middleware('scope:read-general')->only(['index']);
     }
 
     /**
@@ -23,15 +25,5 @@ class BuyerTransactionController extends ApiController
         $transactions = $buyer->transactions;
 
         return $this->showAll($transactions);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 }
