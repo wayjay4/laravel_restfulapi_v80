@@ -5,10 +5,11 @@ namespace App\Policies;
 use App\Buyer;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Traits\AdminActions;
 
 class BuyerPolicy
 {
-    use HandlesAuthorization;
+    use HandlesAuthorization, AdminActions;
 
     /**
      * Determine whether the user can view the model.
