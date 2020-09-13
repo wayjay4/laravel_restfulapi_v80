@@ -16,6 +16,9 @@ class ProductCategoryController extends ApiController
         $this->middleware('auth:api')->except(['index']);
 
         $this->middleware('scope:manage-products')->except(['index']);
+
+        $this->middleware('can:addCategory,product')->only(['update']);
+        $this->middleware('can:deleteCategory,product')->only(['destroy']);
     }
 
     /**

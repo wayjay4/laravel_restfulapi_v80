@@ -9,9 +9,11 @@ use Laravel\Passport\Passport;
 use App\Buyer;
 use App\Seller;
 use App\User;
+use App\Product;
 use App\Policies\BuyerPolicy;
 use App\Policies\SellerPolicy;
 use App\Policies\UserPolicy;
+use App\Policies\ProductPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -26,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         Seller::class => SellerPolicy::class,
         User::class => UserPolicy::class,
         Transaction::class => TransactionPolicy::class,
+        Product::class => ProductPolicy::class,
     ];
 
     /**
