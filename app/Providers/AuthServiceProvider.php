@@ -25,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
         Buyer::class => BuyerPolicy::class,
         Seller::class => SellerPolicy::class,
         User::class => UserPolicy::class,
+        Transaction::class => TransactionPolicy::class,
     ];
 
     /**
