@@ -20,6 +20,8 @@ class ProductBuyerController extends ApiController
      */
     public function index(Product $product)
     {
+        $this->allowedAdminActions();
+
         $buyers = $product->transactions()
             ->with('buyer')
             ->get()
