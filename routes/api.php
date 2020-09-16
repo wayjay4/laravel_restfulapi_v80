@@ -91,3 +91,5 @@ Route::resource('transactions.buyers', 'Transaction\TransactionBuyerController',
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
 
 Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
+
+Route::get('users/verify/{token}', 'User\UserController@verify')->name('verify');
