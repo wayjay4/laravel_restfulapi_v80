@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\User;
 use App\Mail\UserCreated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Transformers\UserTransformer;
 use App\Http\Controllers\ApiController;
@@ -51,13 +52,13 @@ class UserController extends ApiController
         $rules = [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:9|confirmed',
+            'password' => 'required|min:8|confirmed',
         ];
 
         $this->validate($request, $rules);
 
         $data = $request->all();
-        $data['password'] = bcrypt($request->password);
+        $data['password'] = Hash::make($request->password);
         $data['verified'] = User::UNVERIFIED_USER;
         $data['verification_token'] = User::generateVerificationCode();
         $data['admin'] = User::REGULAR_USER;
@@ -106,7 +107,7 @@ class UserController extends ApiController
         }
 
         if($request->has('password')){
-            $user->password = bcrypt($request->password);
+            $user->password = Hash::make($request->password);
         }
 
         if($request->has('admin')){
@@ -141,12 +142,21 @@ class UserController extends ApiController
         return $this->showOne($user);
     }
 
+    public function me(Request $request)
+    {
+        $user = $request->user();
+
+        return $this->showOne($user);
+        
+    }
+
     public function verify($token)
     {
         $user = User::where('verification_token', $token)->firstOrFail();
 
         $user->verified = User::VERIFIED_USER;
         $user->verification_token = null;
+        $user->email_verified_at = $user->freshTimestamp();
 
         $user->save();
 
