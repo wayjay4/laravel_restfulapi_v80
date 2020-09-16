@@ -40,6 +40,8 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
+Auth::routes(['verify' => true]);
+
 Route::get('/home/my-tokens', 'HomeController@getTokens')->name('personal-tokens');
 Route::get('/home/my-clients', 'HomeController@getClients')->name('personal-clients');
 Route::get('/home/authorized_clients', 'HomeController@getAuthorizedClients')->name('authorized-clients');
