@@ -49,7 +49,7 @@ class UserController extends ApiController
         $rules = [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:9|confirmed',
         ];
 
         $this->validate($request, $rules);
