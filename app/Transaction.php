@@ -7,10 +7,11 @@ use App\Product;
 use App\Transformers\TransactionTransformer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaction extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
 
     protected $dates = ['deleted_at'];
 
