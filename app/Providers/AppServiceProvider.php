@@ -7,6 +7,7 @@ use App\Product;
 use App\Mail\UserCreated;
 use Illuminate\Http\Request;
 use App\Mail\UserMailChanged;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -31,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        Paginator::useBootstrap();
 
         User::created(function($user){
             // check if request is coming from an API request (i.e. not from frontend)
